@@ -11,7 +11,7 @@ This action was designed to notify repository maintainers of expiring GitHub Per
 
 ## Inputs
 ### `expiration`
-**Required** The date that the token is set to expire. This should be in the format `YYYY-MM-DD`.
+**Required** The date that the token is set to expire. This should be in the format `YYYY-MM-DD`. Certs that never expire can be added here as well. In this case, the action will simply display the user associated with the token alongside a message that the token never expires. To use this action with a token that never expires, set the expiration date to `0000-00-00`.
 ### `token`
 **Required** The token to check. This should be passed in as a secret. See [GitHub's documentation on secrets](https://docs.github.com/en/actions/reference/encrypted-secrets) for more information.
 ### `token-name`
