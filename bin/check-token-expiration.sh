@@ -50,15 +50,16 @@ function check_token_expiration() {
 
 # Check the authenticated user.
 function check_authenticated_user() {
+    token_type=$( test "$token_expiration" = '0000-00-00' && echo 'legacy, non-expiring' || echo 'fine-grained personal access' )
     user=$(gh api /user | jq -r '"\(.name) (\(.login))"')
     if [[ $token_name ]]; then
-        echo "Logged in as ${user} using the \"${token_name}\" fine-grained personal access token."
+        echo "Logged in as ${user} using the \"${token_name}\" ${token_type} token."
     else 
-        echo "Logged in as ${user} using a fine-grained personal access token."
+        echo "Logged in as ${user} using a ${token_type} token."
     fi
 }
 
+check_authenticated_user
 if [[ $token_expiration != '0000-00-00' ]]; then
     check_token_expiration
 fi
-check_authenticated_user
