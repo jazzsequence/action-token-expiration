@@ -27,4 +27,4 @@ runs:
   steps:
     - name: Check Token Expiration
       shell: bash
-      run: bash bin/check-token-expiration.sh ${{ inputs.expiration }} ${{ inputs.token }} ${{ inputs.warn-days }} ${{ inputs.error-early }} ${{ inputs.token-name }}
+      run: bash bin/check-token-expiration.sh "${{ inputs.expiration }}" "${{ inputs.token }}" "${{ inputs.warn-days }}" "${{ inputs.error-early }}" "${{ inputs.token-name }}"
