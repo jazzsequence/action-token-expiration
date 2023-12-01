@@ -9,7 +9,6 @@ warn_days="$3" # The number of days before token expiration to start warning
 error_early="$4" # Trigger an error if true, before the token has actually expired
 token_name="$5" # The name of the token.
 current_date=$(date +%Y-%m-%d)
-expiration_message="This token will expire in ${days_until_expiry} days."
 rotation_warning_days=$(( error_early == "true" && (warn_days + 16) || 16 ))
 
 export GITHUB_TOKEN="${token}"
@@ -22,6 +21,8 @@ else
     # Linux and others
     days_until_expiry=$(( ( $(date -d "$token_expiration" +%s) - $(date -d "$current_date" +%s) ) / 86400 ))
 fi
+
+expiration_message="This token will expire in ${days_until_expiry} days."
 
 if [[ $days_until_expiry -ge $warn_days ]]; then
     if [[ $error_early == "true" ]]; then
