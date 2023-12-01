@@ -11,7 +11,6 @@ inputs:
   token:
     description: The token to check.
     required: true
-    default: {{ secrets.API_TOKEN }}
   token-name:
     description: How the token is identified. This is helpful (but not required) to provide identifying information about which token is expiring.
     required: false
