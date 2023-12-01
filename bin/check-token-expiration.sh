@@ -46,8 +46,6 @@ if [[ $days_until_expiry -le $rotation_warning_days ]]; then
     echo "Please make a plan to rotate the token in the next couple weeks."
 fi
 
-ssh -T git@github.com
-
 # Check the authenticated user.
 user=$(gh api /user | jq -r '"\(.name) (\(.login))"')
 if [[ $token_name ]]; then
