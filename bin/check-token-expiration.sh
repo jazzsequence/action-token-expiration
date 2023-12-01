@@ -9,10 +9,10 @@ warn_days="$3" # The number of days before token expiration to start warning
 error_early="$4" # Trigger an error if true, before the token has actually expired
 token_name="$5" # The name of the token.
 current_date=$(date +%Y-%m-%d)
-expiration_message="This token will expire in $days_until_expiry days."
+expiration_message="This token will expire in ${days_until_expiry} days."
 rotation_warning_days=$(( error_early == "true" && (warn_days + 16) || 16 ))
 
-export GITHUB_TOKEN="$token"
+export GITHUB_TOKEN="${token}"
 
 # Calculate the time to token expiration so we can display a message.
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -26,18 +26,18 @@ fi
 if [[ $days_until_expiry -ge $warn_days ]]; then
     if [[ $error_early == "true" ]]; then
         # Display an error if the token is set to expire in the future.
-        echo "ERROR: $expiration_message. Please rotate the token now."
+        echo "ERROR: ${expiration_message}. Please rotate the token now."
         exit 1
     fi
     # Display a notice that says how many days are left on the token.
-    echo "$expiration_message"
+    echo "${expiration_message}"
 elif [[ $days_until_expiry -le 0 ]]; then
     # Display an error if the token has already expired.
     echo "ERROR: This token has expired."
     exit 1
 else
     # Display a notice that the token is going to expire within the month.
-    echo "WARNING: $expiration_message"
+    echo "WARNING: ${expiration_message}"
 fi
 
 # Display a reminder to add token rotation to the upcoming sprint.
@@ -50,9 +50,9 @@ ssh -T git@github.com
 # Check the authenticated user.
 user=$(gh api /user | jq -r '"\(.name) (\(.login))"')
 if [[ $token_name ]]; then
-	echo "Logged in as $user using the \"$token_name\" fine-grained personal access token."
+	echo "Logged in as ${user} using the \"${token_name}\" fine-grained personal access token."
 	exit 0
 else 
-	echo "Logged in as $user using a fine-grained personal access token."
+	echo "Logged in as ${user} using a fine-grained personal access token."
 	exit 0
 fi
