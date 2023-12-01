@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: ShellCheck
-        run: shellcheck ${{ github.workspace }}/check-token-expiration.sh
+        run: shellcheck ${{ github.workspace }}/bin/check-token-expiration.sh
   test:
     runs-on: ubuntu-latest
     steps:
