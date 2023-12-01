@@ -31,15 +31,15 @@ function check_token_expiration() {
             echo "ERROR: ${expiration_message}. Please rotate the token now."
             exit 1
         fi
-        # Display a notice that says how many days are left on the token.
-        echo "${expiration_message}"
+        # Display a notice that the token is going to expire within the month.
+        echo "WARNING: ${expiration_message}"
     elif [[ $days_until_expiry -le 0 ]]; then
         # Display an error if the token has already expired.
         echo "ERROR: This token has expired."
         exit 1
     else
-        # Display a notice that the token is going to expire within the month.
-        echo "WARNING: ${expiration_message}"
+        # Display a notice that says how many days are left on the token.
+        echo "${expiration_message}"
     fi
 
     # Display a reminder to add token rotation to the upcoming sprint.
