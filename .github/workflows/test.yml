@@ -21,7 +21,7 @@ jobs:
         with:
           expiration: '2024-12-01'
           token: ${{ secrets.API_TOKEN }}
-          token-name: 'action-token-expiration test token'
+          token-name: action-token-expiration test token
           warn-days: 30
           error-early: true
       - name: Test Non-expiring Token
@@ -29,4 +29,4 @@ jobs:
         with:
           expiration: '0000-00-00'
           token: ${{ secrets.GH_TOKEN }}
-          token-name: 'action-token-expiration autotag token'
+          token-name: action-token-expiration autotag token
