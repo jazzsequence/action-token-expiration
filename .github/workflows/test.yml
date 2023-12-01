@@ -10,3 +10,11 @@ jobs:
         uses: actions/checkout@v2
       - name: ShellCheck
         uses: ludeeus/action-shellcheck@master
+      - name: Test Token Expiration
+        uses: ./
+        with:
+          expiration: '2024-12-01'
+          token: ${{ secrets.API_TOKEN }}
+          token-name: 'action-token-expiration test token'
+          warn-days: 30
+          error-early: true
