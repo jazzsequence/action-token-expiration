@@ -24,7 +24,7 @@ fi
 
 expiration_message="This token will expire in ${days_until_expiry} days."
 
-if [[ $days_until_expiry -ge $warn_days ]]; then
+if [[ $days_until_expiry -le $warn_days ]]; then
     if [[ $error_early == "true" ]]; then
         # Display an error if the token is set to expire in the future.
         echo "ERROR: ${expiration_message}. Please rotate the token now."
