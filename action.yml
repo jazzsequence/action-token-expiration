@@ -1,0 +1,31 @@
+name: Check Token Expiration
+description: Given a manually-set date passed to the action settings, checks if a given GitHub Personal Access Token has expired.
+author: jazzsequence
+branding:
+  icon: shield
+  color: green
+inputs:
+  expiration:
+    description: The date that the token is set to expire.
+    required: true
+  token:
+    description: The token to check.
+    required: true
+    default: {{ secrets.API_TOKEN }}
+  token-name:
+    description: How the token is identified. This is helpful (but not required) to provide identifying information about which token is expiring.
+    required: false
+  warn-days:
+    description: The number of days before the token expires to warn.
+    required: false
+    default: 30
+  error-early:
+    description: If true, trigger an error (failure) before the token has actually expired. Uses the warn-days setting to determine how many days before the token expires to trigger the error.
+    required: false
+    default: false
+runs:
+  using: composite
+  steps:
+    - name: Check Token Expiration
+      shell: bash
+      run: bash bin/check-token-expiration.sh ${{ inputs.expiration }} ${{ inputs.token }} ${{ inputs.warn-days }} ${{ inputs.error-early }} ${{ inputs.token-name }}
