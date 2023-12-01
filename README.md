@@ -1,7 +1,7 @@
 # Token Expiration Checker
 A GitHub action that will alert you if a required certificate has expired.
 
-[![Tests](https://github.com/jazzsequence/action-token-expiration/actions/workflows/Tests/badge.svg)](https://github.com/jazzsequence/action-token-expiration/actions/workflows/test.yml)
+[![Tests](https://github.com/jazzsequence/action-token-expiration/actions/workflows/test.yml/badge.svg)](https://github.com/jazzsequence/action-token-expiration/actions/workflows/test.yml)
 [![MIT License](https://img.shields.io/github/license/jazzsequence/action-token-expiration)](https://github.com/jazzsequence/action-token-expiration/blob/main/LICENSE) 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/jazzsequence/action-token-expiration)](https://github.com/jazzsequence/action-token-expiration/releases)
 
